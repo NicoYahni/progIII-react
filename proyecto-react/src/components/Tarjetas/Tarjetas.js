@@ -30,7 +30,7 @@ class Tarjetas extends Component{
     }
 
     addMore(){
-        //ir a buscar a la API
+        //ir a buscar a la API mas
         let url = this.state.nextUrl
         fetch(url)
             .then( response => response.json())
