@@ -1,11 +1,12 @@
 // import './App.css';
+import Header from "./components/Header/header.js"
+import Footer from "./components/Footer/Footer.js"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h3>Proyecto React : Felix Galperin, Nicolas Yahni, Marcos Hogg</h3>
-      </header>
+      < Header />
+      < Footer />
     </div>
   );
 }
