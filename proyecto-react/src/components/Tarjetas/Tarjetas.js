@@ -5,7 +5,7 @@ class Tarjetas extends Component{
     constructor(){
         super();
         this.state = {
-            personajes:[],
+            artistas:[],
             isLoaded: false,
             nextUrl: '',            
         }
@@ -13,46 +13,47 @@ class Tarjetas extends Component{
 
     componentDidMount(){
         //console.log("me monté");
-        let url = 'https://rickandmortyapi.com/api/character';
+        let url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/artists';
+        //https://rickandmortyapi.com/api/character
         fetch(url)
             .then( response => response.json())
             .then( data => {
-                console.log(data);
+                console.log(data.data);
                 console.log('lo de arriba es la data y abajo es el next');
-                console.log(data.info.next);
+                // console.log(data.next);
                 this.setState({
-                    personajes: data.results,
-                    isLoaded: true,
-                    nextUrl:data.info.next,
+                    artistas: data.data,
+                    isLoaded: true
+                    // nextUrl:data.next,
                 })
             })
             .catch( e => console.log(e))
     }
 
-    addMore(){
-        //ir a buscar a la API mas
-        let url = this.state.nextUrl
-        fetch(url)
-            .then( response => response.json())
-            .then( data => {
-                console.log(data);
+    // addMore(){
+    //     //ir a buscar a la API mas
+    //     let url = this.state.nextUrl
+    //     fetch(url)
+    //         .then( response => response.json())
+    //         .then( data => {
+    //             // console.log(data);
                 
-                this.setState({
-                    nextUrl: data.info.next,
-                    //Sumarlos al array 
-                    personajes: this.state.personajes.concat(data.results)
-                })
-            })
-            .catch( e => console.log(e))
+    //             this.setState({
+    //                 nextUrl: data.info.next,
+    //                 //Sumarlos al array 
+    //                 personajes: this.state.personajes.concat(data.results)
+    //             })
+    //         })
+    //         .catch( e => console.log(e))
 
         
-    }
+    // }
 
-    deleteCard(personajeABorrar){
-        let personajesQueQuedan = this.state.personajes.filter( personaje => personaje.id !== personajeABorrar)
+    deleteCard(artistaABorrar){
+        let artistasQueQuedan = this.state.artistas.filter( artista => artista.id !== artistaABorrar)
         
         this.setState({
-            personajes: personajesQueQuedan
+            artistas: artistasQueQuedan
         })
     }
 
@@ -66,8 +67,12 @@ class Tarjetas extends Component{
                { 
                     this.state.isLoaded === false ?
                     <p>Cargando...</p> :
-                    this.state.personajes.map( (personaje, idx) => <Tarjeta key={personaje.name + idx} dataPersonaje={personaje} remove={(id)=>this.deleteCard(id)}/>)
-                }
+                    this.state.artistas.map( (artista, idx) => <Tarjeta key={artista.name + idx} dataArtista={artista}   remove={(id)=>this.deleteCard(id)}/>)
+                    
+                    
+                      
+                   
+               }
                  
             
               </section>

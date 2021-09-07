@@ -3,7 +3,7 @@ import React from 'react';
 function Footer (){
   return(
   <footer>
-<ul class="team">
+<ul className="team">
     <li>Felix Galperin</li>
     <li>Nicolas Yahni</li>
     <li>Marcos Hogg</li>
