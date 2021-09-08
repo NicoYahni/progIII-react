@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Tarjeta from '../Tarjeta/Tarjeta.js'
+import loading from '../loading.gif'
 
 class Tarjetas extends Component{
     constructor(){
@@ -73,7 +74,7 @@ class Tarjetas extends Component{
                <section className="row card-container">
                { 
                     this.state.isLoaded === false ?
-                    <p>Cargando...</p> :
+                    <img src={loading} alt="Cargando..."/> :
                     
                     this.state.tracks.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
                     
