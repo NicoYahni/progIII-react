@@ -56,13 +56,13 @@ class Tarjetas extends Component{
         
     }
 
-    // deleteCard(trackABorrar){
-    //     let tracksQueQuedan = this.state.tracks.filter( track => track.id !== trackABorrar)
+    deleteCard(trackABorrar){
+        let tracksQueQuedan = this.state.tracks.filter( track => track.id !== trackABorrar)
         
-    //     this.setState({
-    //         tracks: tracksQueQuedan
-    //     })
-    // }
+        this.setState({
+            tracks: tracksQueQuedan
+        })
+    }
 
     render(){
          //console.log('Me rendericé');

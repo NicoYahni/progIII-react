@@ -34,7 +34,9 @@ class Tarjeta extends Component{
                         <p> {`Artista:  ${this.props.dataTrack.artist.name}`}</p>
                         <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
                     </div>
-                    <p className='more' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}>Borrar</p>
+                  
+                    <button className='more' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
+                
                 </main>
             </article>
         );
