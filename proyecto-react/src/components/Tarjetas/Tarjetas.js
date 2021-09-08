@@ -5,7 +5,7 @@ class Tarjetas extends Component{
     constructor(){
         super();
         this.state = {
-            artistas:[],
+            tracks:[],
             isLoaded: false,
             nextUrl: '',            
         }
@@ -13,16 +13,18 @@ class Tarjetas extends Component{
 
     componentDidMount(){
         //console.log("me monté");
-        let url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/artists';
+        let url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks'
+        //https://api.deezer.com/chart/0/artists
         //https://rickandmortyapi.com/api/character
         fetch(url)
             .then( response => response.json())
             .then( data => {
                 console.log(data.data);
                 console.log('lo de arriba es la data y abajo es el next');
+                console.log(data.data);
                 // console.log(data.next);
                 this.setState({
-                    artistas: data.data,
+                    tracks: data.data,
                     isLoaded: true
                     // nextUrl:data.next,
                 })
@@ -49,13 +51,13 @@ class Tarjetas extends Component{
         
     // }
 
-    deleteCard(artistaABorrar){
-        let artistasQueQuedan = this.state.artistas.filter( artista => artista.id !== artistaABorrar)
+    // deleteCard(trackABorrar){
+    //     let tracksQueQuedan = this.state.tracks.filter( track => track.id !== trackABorrar)
         
-        this.setState({
-            artistas: artistasQueQuedan
-        })
-    }
+    //     this.setState({
+    //         tracks: tracksQueQuedan
+    //     })
+    // }
 
     render(){
          //console.log('Me rendericé');
@@ -67,7 +69,8 @@ class Tarjetas extends Component{
                { 
                     this.state.isLoaded === false ?
                     <p>Cargando...</p> :
-                    this.state.artistas.map( (artista, idx) => <Tarjeta key={artista.name + idx} dataArtista={artista}   remove={(id)=>this.deleteCard(id)}/>)
+                    
+                    this.state.tracks.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
                     
                     
                       

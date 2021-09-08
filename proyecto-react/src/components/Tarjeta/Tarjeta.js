@@ -21,8 +21,8 @@ class Tarjeta extends Component{
                     <i className="far fa-window-close"></i>
                 </section>
                 <main>
-                    <img src={this.props.dataArtista.picture_medium} alt=""/>
-                    <h3>{this.props.dataArtista.name}</h3>
+                    <img src={this.props.dataTrack.album.cover} alt=""/>
+                    <h3>{this.props.dataTrack.title}</h3>
                     <p className="description"></p>
                     {/* <section className="aditional-info">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
@@ -30,7 +30,11 @@ class Tarjeta extends Component{
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
                     </section> */}
                     <a href="">Ver más</a>
-                    <p className='more' onClick={ ()=>this.props.remove(this.props.dataArtista.id)}>Borrar</p>
+                    <div className ='extra'>
+                        <p> {`Artista:  ${this.props.dataTrack.artist.name}`}</p>
+                        <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
+                    </div>
+                    <p className='more' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}>Borrar</p>
                 </main>
             </article>
         );
