@@ -8,7 +8,7 @@ class Tarjetas extends Component{
             tracks:[],
             isLoaded: false,
             cantidad: 10,
-            url : 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=',            
+                        
         }
     }
 
@@ -33,24 +33,28 @@ class Tarjetas extends Component{
             .catch( e => console.log(e))
     }
 
-    // addMore(){
-    //     //ir a buscar a la API mas
-    //     let url = this.state.url
-    //     fetch(url)
-    //         .then( response => response.json())
-    //         .then( data => {
-    //             // console.log(data);
+    addMore(){
+        this.setState({
+            cantidad : this.state.cantidad +10
+        },()=>{
+            
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`)
+            .then( response => response.json())
+            .then( data => {
+                // console.log(data);
                 
-    //             this.setState({
-    //                 nextUrl: data.info.next,
-    //                 //Sumarlos al array 
-    //                 personajes: this.state.personajes.concat(data.results)
-    //             })
-    //         })
-    //         .catch( e => console.log(e))
+                this.setState({
+                    
+                    //Sumarlos al array 
+                    tracks: data.data
+                })
+            })
+            .catch( e => console.log(e))
+        })
+        
 
         
-    // }
+    }
 
     // deleteCard(trackABorrar){
     //     let tracksQueQuedan = this.state.tracks.filter( track => track.id !== trackABorrar)
