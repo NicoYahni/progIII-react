@@ -7,14 +7,15 @@ class Tarjetas extends Component{
         this.state = {
             tracks:[],
             isLoaded: false,
-            nextUrl: '',            
+            cantidad: 10,
+            url : 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=',            
         }
     }
 
     componentDidMount(){
         //console.log("me monté");
-        let url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks'
-        //https://api.deezer.com/chart/0/artists
+        let url = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`
+        //{`Artista:  ${this.props.dataTrack.artist.name}`}
         //https://rickandmortyapi.com/api/character
         fetch(url)
             .then( response => response.json())
@@ -34,7 +35,7 @@ class Tarjetas extends Component{
 
     // addMore(){
     //     //ir a buscar a la API mas
-    //     let url = this.state.nextUrl
+    //     let url = this.state.url
     //     fetch(url)
     //         .then( response => response.json())
     //         .then( data => {
