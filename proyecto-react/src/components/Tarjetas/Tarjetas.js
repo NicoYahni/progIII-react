@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Tarjeta from '../Tarjeta/Tarjeta.js'
 import loading from '../loading.gif'
+import "./Tarjetas.css"
 
 class Tarjetas extends Component{
     constructor(){
@@ -73,16 +74,28 @@ class Tarjetas extends Component{
             tracksManipulables: tracksQueQuedan
         })
     }
+    changeFlex(){
+        if (this.state.flexRow === true) {
+         this.setState({
+             flexRow: false
+         })
+        } else {
+         this.setState({
+             flexRow: true
+         })
+        }
+     }
 
     render(){
          //console.log('Me rendericé');
          //console.log(this.state.personjes);
         return(
           <React.Fragment>
+              <button type="button" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
               <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
               <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
             
-               <section className="row card-container">
+               <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 
                     this.state.isLoaded === false ?
                     <img src={loading} alt="Cargando..."/> :
