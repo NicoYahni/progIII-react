@@ -44,7 +44,7 @@ class Tarjetas extends Component{
             cantidad : this.state.cantidad +12
         },()=>{
             
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`)
             .then( response => response.json())
             .then( data => {
                 // console.log(data);
@@ -108,6 +108,9 @@ class Tarjetas extends Component{
                { 
                     this.state.isLoaded === false ?
                     <img src={loading} alt="Cargando..."/> :
+
+                    this.state.tracksManipulables.length == 0 ?
+                    <p> No hay datos que coincidan con su búsqueda </p> :
                     
                     this.state.tracksManipulables.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
                     
