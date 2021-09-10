@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Tarjeta from '../Tarjeta/Tarjeta.js'
 import loading from '../loading.gif'
 import "./Tarjetas.css"
+import Formulario from "../Formulario/Formulario"
 
 class Tarjetas extends Component{
     constructor(){
@@ -74,6 +75,13 @@ class Tarjetas extends Component{
             tracksManipulables: tracksQueQuedan
         })
     }
+    filterCard(textoAFiltrar){
+        let personajesFiltrados = this.state.tracksOriginal.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
+        
+        this.setState({
+            tracksManipulables: personajesFiltrados
+        })
+    }
     changeFlex(){
         if (this.state.flexRow === true) {
          this.setState({
@@ -94,6 +102,7 @@ class Tarjetas extends Component{
               <button type="button" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
               <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
               <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
+              < Formulario filtrar={(texto)=> this.filterCard(texto)} />
             
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 
