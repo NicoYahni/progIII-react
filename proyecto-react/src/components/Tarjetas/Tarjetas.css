@@ -11,3 +11,10 @@
   justify-content: space-around;
   align-items: center;
 }
+.contenedor-body{
+  background-color: #c2d1f0;
+  margin: 0;
+}
+.body{
+  margin: 0;
+}

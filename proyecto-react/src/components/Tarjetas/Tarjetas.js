@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Tarjeta from '../Tarjeta/Tarjeta.js'
-import loading from '../loading.gif'
 import "./Tarjetas.css"
 import Formulario from "../Formulario/Formulario"
 
@@ -100,7 +99,7 @@ class Tarjetas extends Component{
          //console.log('Me rendericé');
          //console.log(this.state.personjes);
         return(
-          <React.Fragment>
+          <div className='contenedor-body'>
               <button type="button" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
               <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
               <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
@@ -109,7 +108,7 @@ class Tarjetas extends Component{
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 
                     this.state.isLoaded === false ?
-                    <img src={loading} alt="Cargando..."/> :
+                    <img src="img/loading.gif" alt="Cargando..."/> :
 
                     this.state.tracksManipulables.length == 0 ?
                     <p> No hay datos que coincidan con su búsqueda </p> :
@@ -123,7 +122,7 @@ class Tarjetas extends Component{
                  
             
               </section>
-           </React.Fragment>
+           </div>
         )
     }
 }

@@ -1,0 +1,15 @@
+.titulo{
+    width: fit-content;
+    font: bold;
+    font-size: 60px;
+    font-family: monospace;
+    margin: auto;
+    color: #142952;
+    padding: 35px;
+
+}
+.Header{
+    background-color: #85a3e0;
+    height: 150px;
+    
+}

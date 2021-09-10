@@ -38,7 +38,7 @@ class Tarjeta extends Component{
                 </section>
                 <main>
 
-                    <img src={this.props.dataTrack.artist.picture_big} alt=""/>
+                    <img className="imagen"src={this.props.dataTrack.artist.picture_big} alt=""/>
                     <h3>{this.props.dataTrack.title}</h3>
                     <p className="description"></p>
                     {/* <section className="aditional-info">
