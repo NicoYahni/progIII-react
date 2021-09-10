@@ -6,16 +6,18 @@ class Tarjetas extends Component{
     constructor(){
         super();
         this.state = {
-            tracks:[],
+            tracksOriginal:[],
+            tracksManipulables:[],
             isLoaded: false,
-            cantidad: 10,
+            cantidad: 12,
+            flexRow: true
                         
         }
     }
 
     componentDidMount(){
         //console.log("me monté");
-        let url = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`
+        let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`
         //{`Artista:  ${this.props.dataTrack.artist.name}`}
         //https://rickandmortyapi.com/api/character
         fetch(url)
@@ -26,7 +28,8 @@ class Tarjetas extends Component{
                 console.log(data.data);
                 // console.log(data.next);
                 this.setState({
-                    tracks: data.data,
+                    tracksOriginal: data.data,
+                    tracksManipulables: data.data,
                     isLoaded: true
                     // nextUrl:data.next,
                 })
@@ -36,7 +39,7 @@ class Tarjetas extends Component{
 
     addMore(){
         this.setState({
-            cantidad : this.state.cantidad +10
+            cantidad : this.state.cantidad +12
         },()=>{
             
         fetch(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`)
@@ -47,7 +50,8 @@ class Tarjetas extends Component{
                 this.setState({
                     
                     //Sumarlos al array 
-                    tracks: data.data
+                    //
+                    tracksManipulables: data.data
                 })
             })
             .catch( e => console.log(e))
@@ -56,12 +60,17 @@ class Tarjetas extends Component{
 
         
     }
+    reset(){
+        this.setState({
+            tracksManipulables: this.state.tracksOriginal
+        })
+    }
 
     deleteCard(trackABorrar){
-        let tracksQueQuedan = this.state.tracks.filter( track => track.id !== trackABorrar)
+        let tracksQueQuedan = this.state.tracksManipulables.filter( track => track.id !== trackABorrar)
         
         this.setState({
-            tracks: tracksQueQuedan
+            tracksManipulables: tracksQueQuedan
         })
     }
 
@@ -70,13 +79,15 @@ class Tarjetas extends Component{
          //console.log(this.state.personjes);
         return(
           <React.Fragment>
-              <button type="button" onClick={ ()=>this.addMore()}>Cargar más tarjetas</button>
+              <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
+              <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
+            
                <section className="row card-container">
                { 
                     this.state.isLoaded === false ?
                     <img src={loading} alt="Cargando..."/> :
                     
-                    this.state.tracks.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
+                    this.state.tracksManipulables.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
                     
                     
                       
