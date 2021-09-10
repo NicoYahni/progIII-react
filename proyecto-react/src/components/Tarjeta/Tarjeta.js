@@ -5,14 +5,29 @@ class Tarjeta extends Component{
     constructor(props){
         super(props)
         this.state = {
-          
+            viewMore: false,
+            text:'Ver Mas'
+        }
+
+    }
+
+    verMas(){
+        if(this.state.viewMore === true){
+            this.setState({
+                viewMore: false,
+                text: 'Ver más'
+            })
+        } else {
+            this.setState({
+                viewMore: true,
+                text: 'Ver menos'
+            })            
         }
     }
-    
     render(){
         // console.log(this.props);
         return (
-          <article>
+          <article className="contenedor-tarjeta">
                 <section className="navigation">
                     <div>
                         <i className="fas fa-chevron-left"></i>
@@ -21,7 +36,8 @@ class Tarjeta extends Component{
                     <i className="far fa-window-close"></i>
                 </section>
                 <main>
-                    <img src={this.props.dataTrack.album.cover} alt=""/>
+
+                    <img src={this.props.dataTrack.artist.picture_big} alt=""/>
                     <h3>{this.props.dataTrack.title}</h3>
                     <p className="description"></p>
                     {/* <section className="aditional-info">
@@ -29,13 +45,13 @@ class Tarjeta extends Component{
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
                     </section> */}
-                    <a href="">Ver más</a>
-                    <div className ='extra'>
+                    <button className="verMas"onClick={ ()=>this.verMas()}>{this.state.text}</button>
+                    <div className = {`extra ${this.state.viewMore ? 'show' : 'hide'} `}>
                         <p> {`Artista:  ${this.props.dataTrack.artist.name}`}</p>
                         <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
                     </div>
                   
-                    <button className='more' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
+                    <button className='eliminar' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
                 
                 </main>
             </article>
