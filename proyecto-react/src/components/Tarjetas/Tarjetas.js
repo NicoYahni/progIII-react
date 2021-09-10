@@ -12,7 +12,8 @@ class Tarjetas extends Component{
             tracksManipulables:[],
             isLoaded: false,
             cantidad: 12,
-            flexRow: true
+            flexRow: true,
+          
                         
         }
     }
@@ -32,7 +33,8 @@ class Tarjetas extends Component{
                 this.setState({
                     tracksOriginal: data.data,
                     tracksManipulables: data.data,
-                    isLoaded: true
+                    isLoaded: true,
+               
                     // nextUrl:data.next,
                 })
             })

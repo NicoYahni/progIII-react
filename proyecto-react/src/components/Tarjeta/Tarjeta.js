@@ -6,7 +6,8 @@ class Tarjeta extends Component{
         super(props)
         this.state = {
             viewMore: false,
-            text:'Ver Mas'
+            text:'Ver Mas',
+           
         }
 
     }
@@ -30,8 +31,8 @@ class Tarjeta extends Component{
           <article className="contenedor-tarjeta">
                 <section className="navigation">
                     <div>
-                        <i className="fas fa-chevron-left"></i>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fas fa-chevron-left"> aa </i>
+                        <i className="fas fa-chevron-right">  bb </i>
                     </div>
                     <i className="far fa-window-close"></i>
                 </section>
@@ -49,6 +50,7 @@ class Tarjeta extends Component{
                     <div className = {`extra ${this.state.viewMore ? 'show' : 'hide'} `}>
                         <p> {`Artista:  ${this.props.dataTrack.artist.name}`}</p>
                         <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
+                        <p>{`Duracion: ${this.props.dataTrack.duration}`} segundos </p>
                     </div>
                   
                     <button className='eliminar' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
