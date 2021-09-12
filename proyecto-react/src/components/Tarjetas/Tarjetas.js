@@ -12,6 +12,7 @@ class Tarjetas extends Component{
             isLoaded: false,
             cantidad: 12,
             flexRow: true,
+            ordenAlfabetico: "normal"
           
                         
         }
@@ -94,6 +95,20 @@ class Tarjetas extends Component{
          })
         }
      }
+     ordenAlfabetico(){
+        if (this.state.ordenAlfabetico === "normal") {
+         this.setState({
+             ordenAlfabetico: "invertido",
+             tracksManipulables: this.state.tracksManipulables.reverse()
+             
+         })
+        } else {
+         this.setState({
+             ordenAlfabetico: "normal",
+             tracksManipulables: this.state.tracksManipulables.sort()
+         })
+        }
+     }
 
     render(){
          //console.log('Me rendericé');
@@ -101,6 +116,7 @@ class Tarjetas extends Component{
         return(
           <div className='contenedor-body'>
               <button type="button" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
+              <button type="button" onClick={ ()=>this.ordenAlfabetico()}>Cambiar Orden</button>
               <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
               <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
               < Formulario filtrar={(texto)=> this.filterCard(texto)} />
@@ -113,7 +129,9 @@ class Tarjetas extends Component{
                     this.state.tracksManipulables.length == 0 ?
                     <p> No hay datos que coincidan con su búsqueda </p> :
                     
-                    this.state.tracksManipulables.map( (track, idx) => <Tarjeta key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
+                    this.state.tracksManipulables.map( (track, idx) => <Tarjeta segundos= {(track.duration -(Math.floor(track.duration / 60)*60))<10 ? 
+                        `0`+(track.duration - (Math.floor(track.duration / 60)*60)):
+                        track.duration - (Math.floor(track.duration / 60)*60)} minutos ={Math.floor(track.duration / 60)} key={track.title + idx} dataTrack={track}   remove={(id)=>this.deleteCard(id)}/>)
                     
                     
                       

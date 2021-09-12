@@ -1,0 +1,14 @@
+footer{
+  background-color: #85a3e0;
+  height: 100px;
+  
+}
+
+.team{
+  list-style: none;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 45px;
+
+}

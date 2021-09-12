@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Tarjeta.css';
 
+
 class Tarjeta extends Component{
     constructor(props){
         super(props)
@@ -26,7 +27,7 @@ class Tarjeta extends Component{
         }
     }
     render(){
-        // console.log(this.props);
+        console.log(this.props.caca);
         return (
           <article className="contenedor-tarjeta">
                 <section className="navigation">
@@ -40,17 +41,13 @@ class Tarjeta extends Component{
 
                     <img className="imagen"src={this.props.dataTrack.artist.picture_big} alt=""/>
                     <h3>{this.props.dataTrack.title}</h3>
-                    <p className="description"></p>
-                    {/* <section className="aditional-info">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p>
-                    </section> */}
+                    <p> {this.props.dataTrack.artist.name}</p>
                     <button className="verMas"onClick={ ()=>this.verMas()}>{this.state.text}</button>
                     <div className = {`extra ${this.state.viewMore ? 'show' : 'hide'} `}>
-                        <p> {`Artista:  ${this.props.dataTrack.artist.name}`}</p>
+                        
                         <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
-                        <p>{`Duracion: ${this.props.dataTrack.duration}`} segundos </p>
+                        <p>{`Duracion: ${this.props.minutos}:${this.props.segundos}`}</p>
+                        <a target="_blank" href={this.props.dataTrack.link}>Más informacion</a>
                     </div>
                   
                     <button className='eliminar' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
