@@ -78,7 +78,7 @@ class Tarjetas extends Component{
         })
     }
     filterCard(textoAFiltrar){
-        let personajesFiltrados = this.state.tracksOriginal.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
+        let personajesFiltrados = this.state.tracksOriginal.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase())||track.artist.name.toLowerCase().includes(textoAFiltrar.toLowerCase()))
         
         this.setState({
             tracksManipulables: personajesFiltrados
