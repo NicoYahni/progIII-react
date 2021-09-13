@@ -27,7 +27,7 @@ class Tarjeta extends Component{
         }
     }
     render(){
-        console.log(this.props.caca);
+        
         return (
           <article className="contenedor-tarjeta">
                 <section className="navigation">
