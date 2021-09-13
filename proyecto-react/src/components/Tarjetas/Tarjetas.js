@@ -9,6 +9,7 @@ class Tarjetas extends Component{
         this.state = {
             tracksOriginal:[],
             tracksManipulables:[],
+            masTracks:[],
             isLoaded: false,
             cantidad: 12,
             flexRow: true,
@@ -55,7 +56,8 @@ class Tarjetas extends Component{
                     
                     //Sumarlos al array 
                     //
-                    tracksManipulables: data.data
+                    tracksManipulables: data.data,
+                    masTracks: data.data
                 })
             })
             .catch( e => console.log(e))
@@ -78,8 +80,10 @@ class Tarjetas extends Component{
         })
     }
     filterCard(textoAFiltrar){
-        let personajesFiltrados = this.state.tracksOriginal.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase())||track.artist.name.toLowerCase().includes(textoAFiltrar.toLowerCase()))
-        
+        let personajesFiltrados = this.state.masTracks.length === 0 ?
+        this.state.tracksOriginal.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase())||track.artist.name.toLowerCase().includes(textoAFiltrar.toLowerCase()))
+        :
+        this.state.masTracks.filter( track => track.title.toLowerCase().includes(textoAFiltrar.toLowerCase())||track.artist.name.toLowerCase().includes(textoAFiltrar.toLowerCase()))
         this.setState({
             tracksManipulables: personajesFiltrados
         })
