@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import "./Formulario.css"
 
 
 class Formulario extends Component{
@@ -24,8 +25,9 @@ class Formulario extends Component{
     render(){
         return (
             <form action="" onSubmit={(evento) => this.evitarDefault(evento)}>
-              <input type="text" onChange={(event) => this.controlarCambios(event)} value={this.state.filtrarPor}
-              placeholder={this.state.filtrarPor} /> 
+               <i className="fas fa-search fa-xs"></i>
+              <input className="buscador" type="text" onChange={(event) => this.controlarCambios(event)} value={this.state.filtrarPor}
+              placeholder="busque por titulo o artista" /> 
               
 
             </form>

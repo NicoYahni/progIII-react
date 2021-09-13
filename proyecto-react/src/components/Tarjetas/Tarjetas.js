@@ -115,11 +115,15 @@ class Tarjetas extends Component{
          //console.log(this.state.personjes);
         return(
           <div className='contenedor-body'>
-              <button type="button" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
-              <button type="button" onClick={ ()=>this.ordenAlfabetico()}>Cambiar Orden</button>
-              <button type="button" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
-              <button type="button" onClick={ ()=>this.reset()}>Resetear canciones</button>
+             <div className='acciones'>
+              <button type="button" className="boton" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
+              <button type="button" className="boton" onClick={ ()=>this.ordenAlfabetico()}>Cambiar Orden</button>
+              <button type="button" className="boton" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
+              <button type="button" className="boton" onClick={ ()=>this.reset()}>Resetear canciones</button>
+
+
               < Formulario filtrar={(texto)=> this.filterCard(texto)} />
+              </div>
             
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 

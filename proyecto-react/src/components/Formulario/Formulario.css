@@ -1,0 +1,19 @@
+.buscador{
+    width: 160px;
+    border-radius: 12px;
+    height: 20px;
+    border-width: 3px;
+    border-color: #85a3e0;
+    background-color: #dde6f6;
+    margin-top: 9px;
+   
+  }
+  
+  .fa-search{
+    color: #315cb2;
+      margin-right: 5px;
+      font-size: 15px;
+      
+      
+  }
+  

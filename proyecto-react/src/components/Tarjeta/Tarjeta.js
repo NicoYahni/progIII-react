@@ -31,26 +31,26 @@ class Tarjeta extends Component{
         return (
           <article className="contenedor-tarjeta">
                 <section className="navigation">
-                    <div>
-                        <i className="fas fa-chevron-left"> aa </i>
-                        <i className="fas fa-chevron-right">  bb </i>
+                    <div className="flechas">
+                        <i className="fas fa-chevron-left">  </i>
+                        <i className="fas fa-chevron-right">   </i>
                     </div>
                     <i className="far fa-window-close"></i>
                 </section>
                 <main>
 
                     <img className="imagen"src={this.props.dataTrack.artist.picture_big} alt=""/>
-                    <h3>{this.props.dataTrack.title}</h3>
-                    <p> {this.props.dataTrack.artist.name}</p>
-                    <button className="verMas"onClick={ ()=>this.verMas()}>{this.state.text}</button>
+                    <h3 className="tituloTrack">{this.props.dataTrack.title}</h3>
+                    <p className="tituloArtista"> {this.props.dataTrack.artist.name}</p>
+                    <button className="boton verMas"onClick={ ()=>this.verMas()}>{this.state.text}</button>
                     <div className = {`extra ${this.state.viewMore ? 'show' : 'hide'} `}>
                         
                         <p>{`Album: ${this.props.dataTrack.album.title}`} </p>
                         <p>{`Duracion: ${this.props.minutos}:${this.props.segundos}`}</p>
-                        <a target="_blank" href={this.props.dataTrack.link}>Más informacion</a>
+                        <a target="_blank" rel="noreferrer" href={this.props.dataTrack.link}>Más informacion</a>
                     </div>
                   
-                    <button className='eliminar' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
+                    <button className='boton eliminar' onClick={ ()=>this.props.remove(this.props.dataTrack.id)}> Eliminar </button>
                 
                 </main>
             </article>
