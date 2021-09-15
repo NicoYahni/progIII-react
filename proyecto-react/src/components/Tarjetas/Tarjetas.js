@@ -127,7 +127,7 @@ class Tarjetas extends Component{
          //console.log(this.state.personjes);
         return(
           <div className='contenedor-body'>
-              <Header cambiar={ ()=>this.changeFlex()} orden={ ()=>this.ordenAlfabetico()} agregar={ ()=>this.addMore()} reiniciar={ ()=>this.reset()}/>
+              <Header cambiar={ ()=>this.changeFlex()} orden={ ()=>this.ordenAlfabetico()} agregar={ ()=>this.addMore()} reiniciar={ ()=>this.reset()} filtrar={ ()=>this.filterCard()}/>
 
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 

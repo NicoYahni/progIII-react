@@ -1,5 +1,5 @@
 // import './App.css';
-import Header from "./components/Header/header.js"
+// import Header from "./components/Header/header.js"
 import Footer from "./components/Footer/Footer.js"
 import Tarjetas from "./components/Tarjetas/Tarjetas.js"
 
