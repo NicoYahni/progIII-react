@@ -11,7 +11,7 @@ class Tarjetas extends Component{
             tracksManipulables:[],
             masTracks:[],
             isLoaded: false,
-            cantidad: 12,
+            cantidad: 0,
             flexRow: true,
             ordenAlfabetico: "normal"
           
@@ -21,7 +21,9 @@ class Tarjetas extends Component{
 
     componentDidMount(){
         //console.log("me monté");
-        let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`
+        let url =  `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=12`
+       
+        // 
         //{`Artista:  ${this.props.dataTrack.artist.name}`}
         //https://rickandmortyapi.com/api/character
         fetch(url)
@@ -47,7 +49,9 @@ class Tarjetas extends Component{
             cantidad : this.state.cantidad +12
         },()=>{
             
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?index=${this.state.cantidad}&limit=12`)
+            
+        //`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=${this.state.cantidad}`
             .then( response => response.json())
             .then( data => {
                 // console.log(data);
@@ -55,12 +59,15 @@ class Tarjetas extends Component{
                 this.setState({
                     
                     //Sumarlos al array 
-                    //
-                    tracksManipulables: data.data,
-                    masTracks: data.data
+                    
+                    tracksManipulables: this.state.tracksManipulables.concat(data.data),
+                    masTracks: this.state.tracksManipulables.concat(data.data)
+                    
                 })
-            })
+                
+            },console.log(this.state.tracksManipulables))
             .catch( e => console.log(e))
+            
         })
         
 
@@ -68,7 +75,8 @@ class Tarjetas extends Component{
     }
     reset(){
         this.setState({
-            tracksManipulables: this.state.tracksOriginal
+            tracksManipulables: this.state.tracksOriginal,
+            cantidad: 0
         })
     }
 
