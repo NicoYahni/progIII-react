@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Tarjeta from '../Tarjeta/Tarjeta.js'
 import "./Tarjetas.css"
-import Formulario from "../Formulario/Formulario"
+import Header from "../Header/header.js"
 
 class Tarjetas extends Component{
     constructor(){
@@ -119,16 +119,8 @@ class Tarjetas extends Component{
          //console.log(this.state.personjes);
         return(
           <div className='contenedor-body'>
-             <div className='acciones'>
-              <button type="button" className="boton" onClick={ ()=>this.changeFlex()}>Cambiar Vista</button>
-              <button type="button" className="boton" onClick={ ()=>this.ordenAlfabetico()}>Cambiar Orden</button>
-              <button type="button" className="boton" onClick={ ()=>this.addMore()}>Cargar más canciones</button>
-              <button type="button" className="boton" onClick={ ()=>this.reset()}>Resetear canciones</button>
+              <Header cambiar={ ()=>this.changeFlex()} orden={ ()=>this.ordenAlfabetico()} agregar={ ()=>this.addMore()} reiniciar={ ()=>this.reset()}/>
 
-
-              < Formulario filtrar={(texto)=> this.filterCard(texto)} />
-              </div>
-            
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 
                     this.state.isLoaded === false ?

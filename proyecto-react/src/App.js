@@ -6,7 +6,7 @@ import Tarjetas from "./components/Tarjetas/Tarjetas.js"
 function App() {
   return (
     <div className="App">
-      < Header />
+      {/* < Header /> */}
       
 
       {/* aca abajo arranca el componente contenedor de tarjetas */}
