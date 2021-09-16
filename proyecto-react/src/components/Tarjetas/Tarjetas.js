@@ -96,16 +96,19 @@ class Tarjetas extends Component{
             tracksManipulables: personajesFiltrados
         })
     }
-    changeFlex(){
+    changeFlexToColumn(){
         if (this.state.flexRow === true) {
          this.setState({
              flexRow: false
          })
-        } else {
+        } 
+     }
+     changeFlexToRow(){
+        if (this.state.flexRow === false) {
          this.setState({
              flexRow: true
          })
-        }
+        } 
      }
      ordenAlfabetico(){
         if (this.state.ordenAlfabetico === "normal") {
@@ -127,7 +130,7 @@ class Tarjetas extends Component{
          //console.log(this.state.personjes);
         return(
           <div className='contenedor-body'>
-              <Header cambiar={ ()=>this.changeFlex()} orden={ ()=>this.ordenAlfabetico()} agregar={ ()=>this.addMore()} reiniciar={ ()=>this.reset()} filtrar={ ()=>this.filterCard()}/>
+              <Header estadoFlex = {this.state.flexRow}cambiarAFila={ ()=>this.changeFlexToRow()} cambiarAColumna={ ()=>this.changeFlexToColumn()} orden={ ()=>this.ordenAlfabetico()} agregar={ ()=>this.addMore()} reiniciar={ ()=>this.reset()} filtrar={ (nicoY)=>this.filterCard(nicoY)}/>
 
                <section className={`card-container ${this.state.flexRow ? "fila" : "columna"}`}>
                { 

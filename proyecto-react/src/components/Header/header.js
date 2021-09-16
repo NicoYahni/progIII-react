@@ -21,14 +21,14 @@ class Header extends Component{
 
 
     <div className='acciones'>
-      <i className="fas fa-th"></i>
-      <i className="fas fa-align-justify"></i>
+      <i className= {`fas fa-th icono-orden ${this.props.estadoFlex == false ? "show" : "hide"}`} onClick={ ()=>this.props.cambiarAFila()}></i>
+      <i className={`fas fa-align-justify icono-orden ${this.props.estadoFlex == true ? "show" : "hide"}`} onClick={ ()=>this.props.cambiarAColumna()}></i>
 
-              <button type="button" className="boton" onClick={ ()=>this.props.cambiar()}>Cambiar Vista</button>
-              <button type="button" className="boton" onClick={ ()=>this.props.orden()}>Cambiar Orden</button>
-              <button type="button" className="boton" onClick={ ()=>this.props.agregar()}>Cargar más canciones</button>
-              <button type="button" className="boton" onClick={ ()=>this.props.reiniciar()}>Resetear canciones</button>
-
+              {/* <button type="button" className="boton-header" onClick={ ()=>this.props.cambiar()}>Cambiar Vista</button> */}
+              
+              <button type="button" className="boton-header" onClick={ ()=>this.props.agregar()}>Cargar más canciones</button>
+              <button type="button" className="boton-header" onClick={ ()=>this.props.reiniciar()}>Resetear canciones</button>
+              <button type="button" className="boton-header" onClick={ ()=>this.props.orden()}>Cambiar Orden</button>
 
               < Formulario filtrar={(texto)=> this.props.filtrar(texto)} />
               </div>
